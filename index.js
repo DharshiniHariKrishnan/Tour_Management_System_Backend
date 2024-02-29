@@ -4,12 +4,15 @@ import mongoose from "mongoose";
 import cors from "cors";
 // import cookieParser from "cookie-parser";
 import searchRouter from "./routes/search.js";
+import accRouter from "./routes/accommodations.js";
+import placeRouter from "./routes/places.js";
+import accIDRouter from "./routes/getAccomodationById.js";
 import { v4 as uuidv4 } from "uuid";
 
 
 dotenv.config();
 const app = express();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 4000;
 const allowedOrigins = ['http://localhost:3000']; 
 
 app.use(cors({
@@ -41,6 +44,9 @@ const connect = async () => {
 app.use(express.json());
 app.use(cors());
 app.use("/search", searchRouter);
+app.use("/search-accommodation", accRouter);
+app.use("/search-place", placeRouter);
+app.use("/get-accommodation-by-id", accIDRouter);
 
 app.listen(port, () => {
   connect();
