@@ -1,6 +1,7 @@
 import accomodations from "../models/accommodations.js";
 
 export const accommodation = async (req, res) => {
+  
   const input = req.query.city;
   const regex = new RegExp(`^${input}`, "i");
 

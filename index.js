@@ -9,6 +9,7 @@ import placeRouter from "./routes/places.js";
 import accIDRouter from "./routes/getAccomodationById.js";
 import { v4 as uuidv4 } from "uuid";
 import travelmodeRouter from "./routes/travelmode.js";
+import getUserIt from "./routes/user_itinerary.js";
 
 
 dotenv.config();
@@ -49,6 +50,7 @@ app.use("/search-accommodation", accRouter);
 app.use("/search-place", placeRouter);
 app.use("/get-accommodation-by-id", accIDRouter);
 app.use("/search-mode", travelmodeRouter);
+app.use("/api", getUserIt);
 
 app.listen(port, () => {
   connect();

@@ -2,7 +2,7 @@ import travelmodes from "../models/travelmodes.js";
 
 export const t_modes = async (req, res) => {
   const inputCity = req.query.city;
-  console.log(inputCity);
+  console.log(req);
   const regex = new RegExp(`^${inputCity}`, "i");
 
   try {
