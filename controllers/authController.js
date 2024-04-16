@@ -80,6 +80,7 @@ export const login = async (req, res) => {
         process.env.JWT_SECRET_KEY,
         { expiresIn: "10d" }
       );
+      console.log(token)
 
       const expirationDate = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000);
 

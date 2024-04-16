@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
-// import cookieParser from "cookie-parser";
+import cookieParser from "cookie-parser";
 import CreateUserRouter from "./routes/user.js";
 import AuthRouter from "./routes/auth.js";
 import travel_itinerarySchema from "./models/travel_itinerary.js";
@@ -17,7 +17,7 @@ import accIDRouter from "./routes/getAccomodationById.js";
 import { v4 as uuidv4 } from "uuid";
 import travelmodeRouter from "./routes/travelmode.js";
 import getUserIt from "./routes/user_itinerary.js";
-
+import reviewRouter from "./routes/getReviewsAccommodation.js";
 
 dotenv.config();
 const app = express();
@@ -52,6 +52,7 @@ const connect = async () => {
 //middleware
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 app.use("/search", searchRouter);
 app.use("/auth", AuthRouter);
 app.use("/user", CreateUserRouter);
@@ -60,6 +61,8 @@ app.use("/search-place", placeRouter);
 app.use("/get-accommodation-by-id", accIDRouter);
 app.use("/search-mode", travelmodeRouter);
 app.use("/api", getUserIt);
+app.use("/fetch-useritinerary", getUserIt);
+app.use("/fetch-reviews-accommodation", reviewRouter);
 
 
 app.post("/add-travelitinerary", async (req, res) => {
