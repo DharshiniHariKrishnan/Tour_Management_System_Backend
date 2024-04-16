@@ -7,3 +7,4 @@ getUserIt.get("/getUserItinerary", getUserItinerary);
 getUserIt.post("/sendItineraryEmail", sendItineraryEmail);
 getUserIt.post("/submititinerary", submititinerary)
 export default getUserIt;
+

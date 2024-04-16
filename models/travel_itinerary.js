@@ -6,7 +6,7 @@ const travel_itinerarySchema = new mongoose.Schema({
   return_date: { type: String, required: true },
   num_travelers: { type: Number, required: true },
   uid: { type: String, required: false },
-  uid_user: { type: String, required: false },
+  uid_user: { type: String, required: true },
 });
 
 export default mongoose.model("travel_itinerary", travel_itinerarySchema);
