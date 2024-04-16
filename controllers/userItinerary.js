@@ -3,7 +3,7 @@ import travel_itinerary from "../models/travel_itinerary.js";
 import CombinedResults from "../models/combined_results.js";
 import speakeasy from 'speakeasy';
 import nodemailer from 'nodemailer'
-// import User from '../models/User.js';
+import User from '../models/User.js';
 
 export const getUserItinerary = async (req, res) => {
   const input = req.query.userId;
@@ -74,7 +74,22 @@ export const sendItineraryEmail = async (req, res) => {
       travelText += `Service ${index + 1} - From: ${item.from_place}, Departure: ${item.departure_date}, Return: ${item.return_date}, Number of Travelers: ${item.num_travelers}\n`;
     });
 
+    // Set up email transporter
+    const transporter = nodemailer.createTransport({
+      service: 'Gmail',
+      auth: {
+        user: 'sainikhil260@gmail.com',
+        pass: 'bzes uwjp lcur sahq',
+      },
+    });
 
+    // Define email contents
+    const mailOptions = {
+      from: 'sainikhil260@gmail.com',
+      to: to_email,
+      subject: 'Travel Itinerary Details',
+      text: `${accommodationsText}\n${travelText}\nComments:\n${existingCombinedResults.comments.join('\n')}`,
+    };
 
     // Send email
     transporter.sendMail(mailOptions, (error, info) => {
