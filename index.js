@@ -24,6 +24,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 const allowedOrigins = ['https://main--glowing-biscochitos-6e4f4d.netlify.app/home']; 
 
+
 app.use(cors({
   origin: function (origin, callback) {
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
