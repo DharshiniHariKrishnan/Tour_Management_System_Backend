@@ -22,7 +22,7 @@ import reviewRouter from "./routes/getReviewsAccommodation.js";
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 4000;
-const allowedOrigins = ['http://localhost:3000']; 
+const allowedOrigins = ['https://main--glowing-biscochitos-6e4f4d.netlify.app/home']; 
 
 app.use(cors({
   origin: function (origin, callback) {
