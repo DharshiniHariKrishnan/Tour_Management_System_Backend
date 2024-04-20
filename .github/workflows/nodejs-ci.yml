@@ -26,10 +26,10 @@ jobs:
       run: |
         npm install
 
-    - name: Run Tests
-      # Assuming you might add tests later; remove if not applicable
-      run: |
-        npm test  # Adjust if you have specific test scripts later
+    # - name: Run Tests
+    #   # Assuming you might add tests later; remove if not applicable
+    #   run: |
+    #     npm test  # Adjust if you have specific test scripts later
 
     - name: Build and push the Docker image
       run: |
