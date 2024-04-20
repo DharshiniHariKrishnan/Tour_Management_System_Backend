@@ -1,0 +1,38 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        node-version: [16.x, 18.x]  # Testing against LTS versions of Node.js
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install Dependencies
+      run: |
+        npm install
+
+    - name: Run Tests
+      # Assuming you might add tests later; remove if not applicable
+      run: |
+        npm test  # Adjust if you have specific test scripts later
+
+    - name: Build and push the Docker image
+      run: |
+        docker login --username DharshiniHariKrishnan --password ${{secrets.ACCESS_TOKEN}} ghcr.io
+        docker build -t ghcr.io/DharshiniHariKrishnan/Tour_Management_System_Backend:latest --file Dockerfile .  
+        docker push ghcr.io/DharshiniHariKrishnan/Tour_Management_System_Backend:latest 
