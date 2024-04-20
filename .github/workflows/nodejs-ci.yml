@@ -34,5 +34,5 @@ jobs:
     - name: Build and push the Docker image
       run: |
         docker login --username DharshiniHariKrishnan --password ${{secrets.ACCESS_TOKEN}} ghcr.io
-        docker build -t ghcr.io/DharshiniHariKrishnan/backend:latest --file Dockerfile .  
-        docker push ghcr.io/DharshiniHariKrishnan/backend:latest 
+        docker build -t ghcr.io/dharshiniharikrishnan/backend:latest --file Dockerfile .  
+        docker push ghcr.io/dharshiniharikrishnan/backend:latest 
